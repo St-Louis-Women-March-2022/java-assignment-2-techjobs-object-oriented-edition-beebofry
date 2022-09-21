@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo.test;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(JUnit4.class)
 public class JobTest {
+
 @Test
     public void testSettingJobId(){
     Job job1 = new Job();
@@ -53,7 +55,8 @@ public class JobTest {
     public void testToStringContainsCorrectLabelsAndData() {
     Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     String testToString = testJob.toString();
-    assertEquals(testToString, "\nID: 1" +
+    int id = testJob.getId();
+    assertEquals(testToString, "\nID: "+ id +
             "\nName: Product tester" +
             "\nEmployer: ACME" +
             "\nLocation: Desert" +
@@ -63,9 +66,10 @@ public class JobTest {
 
 @Test
     public void testToStringHandlesEmptyField(){
-    Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-    String testToString = testJob.toString();
-    assertEquals(testToString, "\nID: 1" +
+    Job testJobEmpty = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+    String testToString = testJobEmpty.toString();
+    int id = testJobEmpty.getId();
+    assertEquals(testToString, "\nID: "+ id +
             "\nName: Data not available" +
             "\nEmployer: Data not available" +
             "\nLocation: Data not available" +
